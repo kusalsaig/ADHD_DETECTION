@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<style>
+.coherence-page .section-title {
+    font-size: 18px;
+    margin-top: 22px;
+    color: #c8f9ff;
+}
+.coherence-page table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    background: rgba(0,20,30,0.22);
+    color: #eaffff;
+}
+.coherence-page th {
+    background: rgba(0,255,255,0.1);
+    padding: 6px;
+    border-bottom: 1px solid rgba(0,255,255,0.2);
+}
+.coherence-page td {
+    padding: 6px;
+    border-bottom: 1px solid rgba(0,255,255,0.08);
+}
+</style>
+
+<div class="card coherence-page">
+    <h3>Pearson Coherence</h3>
+
+    <div class="section-title">Top 10</div>
+    {{ top10|safe }}
+
+    <div class="section-title">Sample 10</div>
+    {{ sample10|safe }}
+
+    <div class="section-title">Bottom 10</div>
+    {{ bottom10|safe }}
+</div>
+
+{% endblock %}

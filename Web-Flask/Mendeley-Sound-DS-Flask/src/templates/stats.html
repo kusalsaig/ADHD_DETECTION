@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<style>
+.stats-page .img-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.stats-page img {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid rgba(0,255,255,0.15);
+}
+
+.stats-page .result {
+    font-size: 16px;
+    margin-top: 12px;
+    color: #c7f9ff;
+}
+</style>
+
+<div class="card stats-page">
+    <h3>Statistical Tests</h3>
+
+    <div class="result">
+        p-value: {{ "%.6f"|format(p_value) }}
+    </div>
+
+    <div class="img-grid">
+        {% for img in images %}
+            <img src="{{ url_for('static', filename='plots/' + img) }}">
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<style>
+
+</style>
+
+<div class="card feature-matrix-page">
+    <h3>Feature Matrix</h3>
+
+    <div class="section-title">Top 10 Rows</div>
+    {{ top10|safe }}
+
+    <div class="section-title">Sample 10 Rows</div>
+    {{ sample10|safe }}
+
+    <div class="section-title">Bottom 10 Rows</div>
+    {{ bottom10|safe }}
+
+    <div class="download">
+        <a href="{{ url_for('static', filename='plots/' + download) }}" download>
+            Download Full Feature Matrix (CSV)
+        </a>
+    </div>
+</div>
+
+{% endblock %}

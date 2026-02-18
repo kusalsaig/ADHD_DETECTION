@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<style>
+
+</style>
+
+<div class="card bp-heatmap-page">
+    <h3>Bandpower Heatmap</h3>
+
+    <div class="section-title">Preview Table (First 15 Rows)</div>
+    {{ table|safe }}
+
+    <div class="section-title">Group-wise Heatmaps</div>
+
+    <div class="img-grid">
+        {% for img in images %}
+            <img src="{{ url_for('static', filename='plots/' + img) }}">
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

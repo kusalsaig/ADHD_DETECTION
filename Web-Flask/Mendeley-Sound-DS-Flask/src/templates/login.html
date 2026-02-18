@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADHD Detection - Login</title>
+
+<link rel="stylesheet"
+      href="https://scientias.in/enys/ADHD/loginstyle-acb750f2-2818-442b-abec-4558c05c9a26.css?v=20250210">
+</head>
+
+<body>
+
+<div class="login-container">
+    <div class="login-title"> ADHD Detection</div>
+    {% if error %}
+<div class="error-box">{{ error }}</div>
+{% endif %}
+    <form method="POST" action="/login">
+        <div class="input-group">
+            <label>Username</label>
+            <input type="text" name="username" required value="admin">
+        </div>
+
+        <div class="input-group">
+            <label>Password</label>
+            <input type="password" name="password" required value="admin123">
+        </div>
+
+        <button class="btn-login" type="submit">LOGIN</button>
+
+
+    </form>
+
+</div>
+
+</body>
+</html>

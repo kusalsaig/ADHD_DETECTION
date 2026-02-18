@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="users page-container">
+
+    <h2>User Management</h2>
+
+    <a href="{{ url_for('users_add') }}" class="users-btn users-btn-primary" style="margin-bottom:15px;">
+        Add User
+    </a>
+
+    <table class="users-table">
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Actions</th>
+        </tr>
+
+        {% for u in users %}
+        <tr>
+            <td>{{ u.id }}</td>
+            <td>{{ u.username }}</td>
+            <td>
+                <a href="{{ url_for('users_edit', id=u.id) }}" class="users-btn users-btn-warning">Edit</a>
+
+                {% if u.username.lower() != 'admin' %}
+                <form action="{{ url_for('users_delete', id=u.id) }}" method="POST" style="display:inline;">
+                    <button class="users-btn users-btn-danger" onclick="return confirm('Delete this user?')">
+                        Delete
+                    </button>
+                </form>
+                {% else %}
+                <span class="users-badge users-badge-protected">Protected</span>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+
+{% endblock %}

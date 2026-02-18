@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<style>
+
+</style>
+
+<div class="card spectrogram-page">
+    <h3>Spectrogram (STFT)</h3>
+
+    <div class="img-grid">
+        {% for img in images %}
+        <img src="{{ url_for('static', filename='plots/' + img) }}">
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

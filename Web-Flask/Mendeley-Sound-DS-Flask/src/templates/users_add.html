@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="users page-container">
+
+    <h2>User Management – Add User</h2>
+
+    {% if error %}
+    <div class="users-alert users-alert-danger">{{ error }}</div>
+    {% endif %}
+
+    <form method="POST">
+
+        <label>Username</label>
+        <input type="text" name="username" class="users-input" required>
+
+        <label>Password</label>
+        <input type="password" name="password" class="users-input" required>
+
+        <label>Confirm Password</label>
+        <input type="password" name="confirm_password" class="users-input" required>
+
+        <br>
+        <button class="users-btn users-btn-primary">Create User</button>
+    </form>
+
+</div>
+
+{% endblock %}

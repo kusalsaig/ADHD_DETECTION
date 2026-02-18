@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<style>
+
+</style>
+
+<div class="card pearson-page">
+    <h3>Pearson Correlation</h3>
+
+    <div class="section-title">Top 10</div>
+    {{ top10|safe }}
+
+    <div class="section-title">Sample 10</div>
+    {{ sample10|safe }}
+
+    <div class="section-title">Bottom 10</div>
+    {{ bottom10|safe }}
+</div>
+
+{% endblock %}

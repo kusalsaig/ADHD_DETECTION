@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<style>
+.psd-page .img-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.psd-page img {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid rgba(0,255,255,0.15);
+}
+</style>
+
+<div class="card psd-page">
+    <h3>Power Spectral Density</h3>
+
+    <div class="img-grid">
+        {% for img in images %}
+        <img src="{{ url_for('static', filename='plots/' + img) }}">
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

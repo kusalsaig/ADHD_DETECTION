@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ADHD Dashboard</title>
+  <link rel="stylesheet"
+    href="https://scientias.in/enys/ADHD/style-4a7f09c9-2661-4d90-8c68-217afbc9d366.css?v=20250210">
+</head>
+
+<body>
+
+  <div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="icon">
+          <!-- brain / network svg -->
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="30" height="30">
+            <path d="M12 2c1 0 2.2.6 3 1.5C16.8 3.4 18 4 19 4c1 0 2 1 2 2s-1 2-2 2c-.6 0-1.2-.2-2-.5" stroke="#041827"
+              stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="8" cy="8" r="1" fill="#041827" />
+            <path d="M4 13c1-3 4-5 8-5s7 2 8 5" stroke="#041827" stroke-width="0.8" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </div>
+
+        <div>
+          <h1>EEG ADHD</h1>
+          <p>Analysis Dashboard</p>
+        </div>
+      </div>
+
+      <div class="search">
+        <input type="search" placeholder="Search menu..." id="menuSearch" oninput="filterMenu()">
+      </div>
+
+      <nav class="menu">
+
+        <!-- Analysis -->
+        <div class="group">
+          <div class="group-header">Analysis</div>
+          <div class="subitems">
+            <a href="{{ url_for('cell_summary') }}" class="item"><svg viewBox="0 0 24 24">
+                <path d="M3 13h8V3H3v10zm10 8h8V3h-8v18zM3 21h8v-6H3v6z" fill="currentColor" />
+              </svg> Cell Arrays Summarization</a>
+            <a href="{{ url_for('raw_samples') }}" class="item"><svg viewBox="0 0 24 24">
+                <path d="M3 3h18v2H3V3zm2 6h14v8H5V9z" fill="currentColor" />
+              </svg> Raw Signals Samples</a>
+            <a href="{{ url_for('psd') }}" class="item"><svg viewBox="0 0 24 24">
+                <path d="M3 3v18h18V3H3zm5 15H6V8h2v10zm4 0h-2V5h2v13zm4 0h-2V11h2v7z" fill="currentColor" />
+              </svg> Power Spectral Density</a>
+            <a href="{{ url_for('bandpower') }}" class="item"><svg viewBox="0 0 24 24">
+                <path d="M4 6h16v2H4V6zm0 5h10v2H4v-2zM4 16h6v2H4v-2z" fill="currentColor" />
+              </svg> Band Power Extraction</a>
+          </div>
+        </div>
+
+        <!-- Time-Frequency -->
+        <div class="group">
+          <div class="group-header">Time-Frequency</div>
+          <div class="subitems">
+            <a href="{{ url_for('spectrogram') }}" class="item"><svg viewBox="0 0 24 24">
+                <path d="M2 12h20v2H2v-2z" fill="currentColor" />
+              </svg> Spectrogram Sample</a>
+            <a href="{{ url_for('cwt') }}" class="item"><svg viewBox="0 0 24 24">
+                <path d="M4 4h16v16H4z" fill="currentColor" />
+              </svg> Continuous Wavelet Transform</a>
+          </div>
+        </div>
+
+
+
+
+        <div class="group">
+          <div class="group-header">Summaries & Stats</div>
+          <div class="subitems">
+            <a href="{{ url_for('subject_summary') }}" class="item"><svg viewBox="0 0 24 24">
+                <path d="M12 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM4 20v-1a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v1H4z"
+                  fill="currentColor" />
+              </svg> Subject-level summary</a>
+            <a href="{{ url_for('stats') }}" class="item"><svg viewBox="0 0 24 24">
+                <path d="M3 13h2v6H3v-6zm6-4h2v10h-2V9zm6 8h2v2h-2v-2z" fill="currentColor" />
+              </svg> Statistical tests</a>
+          </div>
+        </div>
+
+        <div class="group">
+          <div class="group-header">Visual Gallery</div>
+          <div class="subitems">
+            <a href="{{ url_for('subjects_per_group') }}" class="item"><svg viewBox="0 0 24 24">
+                <path d="M3 13h8v8H3v-8zM13 7h8v14h-8V7z" fill="currentColor" />
+              </svg> Subjects per group</a>
+            <a href="{{ url_for('bandpower_heatmap') }}" class="item"><svg viewBox="0 0 24 24">
+                <path d="M3 3h18v18H3V3zm2 2v14h14V5H5z" fill="currentColor" />
+              </svg> Bandpower heatmap</a>
+            <a href="{{ url_for('box_per_band') }}" class="item"><svg viewBox="0 0 24 24">
+                <path d="M3 3h18v18H3V3zm4 4v10h2V7H7zm4 2v8h2v-8h-2zm4-2v10h2V7h-2z" fill="currentColor" />
+              </svg> Box per band/channel</a>
+
+            <a href="{{ url_for('scalogram_gallery') }}" class="item"><svg viewBox="0 0 24 24">
+                <path d="M2 6h20v2H2V6zm0 5h20v2H2v-2zm0 5h20v2H2v-2z" fill="currentColor" />
+              </svg> Scalogram gallery</a>
+          </div>
+        </div>
+
+
+        <div class="group">
+          <div class="group-header">Prediction</div>
+          <div class="subitems">
+            <a href="{{ url_for('feature_matrix') }}" class="item"><svg viewBox="0 0 24 24">
+                <path d="M3 3h18v4H3V3zm0 6h10v4H3V9zm0 6h6v4H3v-4z" fill="currentColor" />
+              </svg> Feature Matrix</a>
+            <a href="{{ url_for('predict') }}" class="item"><svg viewBox="0 0 24 24">
+                <path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+                  fill="currentColor" />
+              </svg> ADHD Prediction</a>
+
+          </div>
+        </div>
+
+
+
+      </nav>
+
+      <div class="small">
+        <div>&nbsp;</div>
+        <div class="badge">AI • EEG</div>
+      </div>
+
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+      <div class="header">
+        <div>
+          <button class="menu-toggle" id="menuBtn" onclick="toggleSidebar()">☰</button>
+          <h2>EEG ADHD Detection</h2>
+          <div style="font-size:13px;color:var(--muted)">Futuristic AI · Medical Analytics</div>
+        </div>
+
+        <div class="controls">
+          <!-- Add quick action buttons here -->
+          <a href="{{ url_for('dashboard') }}" style="text-decoration:none;">
+            <div class="badge">Dashboard</div>
+          </a>
+          <a href="{{ url_for('users_list') }}" style="text-decoration:none;margin-left:20px;">
+            <div class="badge">Manage Users</div>
+          </a>
+          <a href="{{ url_for('logout') }}" style="text-decoration:none;margin-left:20px;">
+            <div class="badge">Logout</div>
+          </a>
+        </div>
+
+      </div>
+
+      <div style="height:22px"></div>
+
+      <!-- Page body injected here -->
+      <div id="pageContent">
+        {% block content %}
+        <div class="card">
+          <h3>Welcome</h3>
+          <p>Choose a menu item to start analysis.</p>
+        </div>
+        {% endblock %}
+      </div>
+
+    </main>
+  </div>
+
+  <script>
+    /* Sidebar toggling & search filter */
+    function toggleSidebar() {
+      const sb = document.getElementById('sidebar');
+      sb.classList.toggle('open');
+    }
+    function filterMenu() {
+      const q = document.getElementById('menuSearch').value.toLowerCase();
+      document.querySelectorAll('.menu a.item').forEach(a => {
+        const txt = a.textContent.toLowerCase();
+        a.style.display = txt.includes(q) ? 'flex' : 'none';
+      });
+    }
+
+    /* mark active link automatically (basic) */
+    (function markActive() {
+      const href = location.pathname;
+      document.querySelectorAll('.menu a.item').forEach(a => {
+        if (a.getAttribute('href') === href) {
+          a.classList.add('active');
+        }
+      });
+    })();
+  </script>
+
+</body>
+
+</html>

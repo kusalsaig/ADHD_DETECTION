@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<style>
+.band-table-page .section-title {
+    font-size: 18px;
+    margin-top: 20px;
+    color: #c8f9ff;
+}
+
+.band-table-page table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    background: rgba(0, 20, 30, 0.22);
+    color: #eaffff;
+    margin-top: 10px;
+}
+
+.band-table-page th {
+    background: rgba(0, 255, 255, 0.1);
+    padding: 6px;
+    border-bottom: 1px solid rgba(0,255,255,0.2);
+}
+
+.band-table-page td {
+    padding: 6px;
+    border-bottom: 1px solid rgba(0,255,255,0.08);
+}
+</style>
+
+<div class="card band-table-page">
+    <h3>Bandpower Feature Table</h3>
+
+    <div class="section-title">Top 10 Rows</div>
+    <div>{{ top10|safe }}</div>
+
+    <div class="section-title">Sample 10 Rows</div>
+    <div>{{ sample10|safe }}</div>
+
+    <div class="section-title">Bottom 10 Rows</div>
+    <div>{{ bottom10|safe }}</div>
+</div>
+
+{% endblock %}

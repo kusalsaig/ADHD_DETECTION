@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="dash-container">
+
+    <h2 class="dash-title">Analytics Dashboard</h2>
+    <p class="dash-subtitle">ADHD • Model Insights</p>
+    <div class="dash-container">
+    <div class="dash-grid">
+
+        <div class="dash-card">
+            <div class="dash-icon"><i class="fas fa-brain"></i></div>
+            <div>
+                <h3 class="dash-value">{{ total_subjects }}</h3>
+                <p class="dash-label">Total Subjects</p>
+            </div>
+        </div>
+
+        <div class="dash-card">
+            <div class="dash-icon"><i class="fas fa-user-injured"></i></div>
+            <div>
+                <h3 class="dash-value">{{ adhd_count }}</h3>
+                <p class="dash-label">ADHD Subjects</p>
+            </div>
+        </div>
+
+        <div class="dash-card">
+            <div class="dash-icon"><i class="fas fa-user-check"></i></div>
+            <div>
+                <h3 class="dash-value">{{ control_count }}</h3>
+                <p class="dash-label">Control Subjects</p>
+            </div>
+        </div>
+
+        <div class="dash-card">
+            <div class="dash-icon"><i class="fas fa-square-poll-horizontal"></i></div>
+            <div>
+                <h3 class="dash-value">{{ model_acc }}%</h3>
+                <p class="dash-label">Model Accuracy</p>
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+    <div class="dash-grid-2">
+        <div class="dash-panel">
+            <h3 class="panel-title"><i class="fas fa-users"></i> Subjects Per Group</h3>
+            <img src="{{ url_for('static', filename=plot1) }}" class="dash-img">
+        </div>
+
+        <div class="dash-panel">
+            <h3 class="panel-title"><i class="fas fa-wave-square"></i> Bandpower Heatmap</h3>
+            <img src="{{ url_for('static', filename=plot2) }}" class="dash-img">
+        </div>
+    </div>
+
+</div>
+
+<style>
+
+</style>
+
+{% endblock %}

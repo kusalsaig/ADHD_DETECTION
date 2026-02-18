@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<style>
+
+</style>
+
+<div class="card boxband-page">
+    <h3>Boxplots — Bandpower per Band & Group</h3>
+
+    <div class="section-title">Preview Table (First 15 Rows)</div>
+    {{ table|safe }}
+
+    <div class="section-title">Boxplots</div>
+
+    <div class="img-grid">
+        {% for img in images %}
+            <img src="{{ url_for('static', filename='plots/' + img) }}">
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

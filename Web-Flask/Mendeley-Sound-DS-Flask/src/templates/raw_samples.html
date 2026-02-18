@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<style>
+
+</style>
+
+<div class="card raw-samples">
+    <h3>Raw Signal Samples</h3>
+
+    <div class="plot-grid">
+        {% for name, sig in samples.items() %}
+        <div class="plot-box">
+            <div class="plot-title">{{ name }}</div>
+            <canvas id="plot_{{ loop.index }}"></canvas>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+{% for name, sig in samples.items() %}
+new Chart(document.getElementById("plot_{{ loop.index }}"), {
+    type: "line",
+    data: {
+        labels: [...Array({{ sig|length }}).keys()],
+        datasets: [{
+            label: "{{ name }}",
+            data: {{ sig }},
+            borderWidth: 1,
+            tension: 0.2
+        }]
+    },
+    options: {
+        responsive: true,
+        scales: { x: { display: false } }
+    }
+});
+{% endfor %}
+</script>
+
+{% endblock %}

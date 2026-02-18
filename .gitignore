@@ -1,0 +1,31 @@
+# Virtual Environment
+.venv/
+venv/
+env/
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Dataset (Huge files, usually not in git)
+Dataset/
+EEG_Data/
+*.mat
+
+# Database (User data)
+*.db
+Web-Flask/Mendeley-Sound-DS-Flask/src/static/*.db
+
+# Temporary Logs
+*.log
+results.txt
+training_log.txt
+
+# Large Model Checkpoints (Optional: exclude large .pt files if needed)
+# Models/*.pt
+# keeping CustomGCN-Full.pt (117KB - allow)

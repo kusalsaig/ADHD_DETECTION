@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<style>
+
+</style>
+
+<div class="card cell-array">
+    <h3>Cell Arrays Summarization</h3>
+
+    <div class="table-wrap">
+        <table class="eeg-table">
+            <thead>
+                <tr>
+                    <th>File</th>
+                    <th>Group</th>
+                    <th>Task</th>
+                    <th>Subjects</th>
+                    <th>Samples</th>
+                    <th>Channels</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for row in summary %}
+                <tr>
+                    <td>{{ row.file }}</td>
+                    <td>{{ row.group }}</td>
+                    <td>{{ row.task_id }}</td>
+                    <td>{{ row.subjects }}</td>
+                    <td>{{ row.samples }}</td>
+                    <td>{{ row.channels }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
